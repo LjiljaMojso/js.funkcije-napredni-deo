@@ -1,4 +1,3 @@
-console.log("helloooooo")
 
 //TASK 1:
 
@@ -62,82 +61,30 @@ Then create a four instances of object from that constructor, each with differen
 First should have method for multiplying of its own numbers, second for dividing, third for adding and fourth for subtracting.
  */
 
- function SomeNumbers(firsNumber,secondNumber){
-     this.firsNumber = firsNumber;
-     this.secondNumber = secondNumber;
-     this.doSomething = function(){
-         console.log(firsNumber * secondNumber)
-         console.log(firsNumber / secondNumber)
-         console.log(firsNumber + secondNumber)
-         console.log(firsNumber - secondNumber)
+function SomeNumbers(firstNo,secondNo,calculationFn){
 
-     }
-
- }
- var numbers = new SomeNumbers(36,10,function(){});
- var numbers = new SomeNumbers(452,10,function(){});
- var numbers = new SomeNumbers(58,10,function(){});
- var numbers = new SomeNumbers(36,10,function(){});
- numbers.doSomething()
-
-//TASK 5:
-//Test your understanding of closures and scope with following examples.
-
-
-function test() {
-    console.log(a);
-    console.log(foo());
+    this.firstNumber = firstNo;
+    this.secondNumber = secondNo;
+    this.calculationFunction = calculationFn;
+}
     
-    var a = 1;
-    function foo() {
-       return 2;
-    }
- }
-
- test();
-
- //What is result?
-
-		var a = 1; 
-
-		function someFunction(number) {
-		  function otherFunction(input) {
-		    return a;
-		  }
-		  
-		  a = 5;
-		  
-		  return otherFunction;
-		}
-
-		var firstResult = someFunction(9);
-		var result = firstResult(2);
-
-
-        var fullname = 'John Doe';
-		var obj = {
-		   fullname: 'Colin Ihrig',
-		   prop: {
-		      fullname: 'Aurelio De Rosa',
-		      getFullname: function() {
-		         return this.fullname;
-		      }
-		   }
-		};
-
-		console.log(obj.prop.getFullname());
-
-		var test = obj.prop.getFullname;
-
-		console.log(test());
-
-        var a = 1; 
-		function b() { 
-		    a = 10; 
-		    return; 
-		    function a() {} 
-		} 
-		b(); 
-		console.log(a);
+var firstInst = new SomeNumbers(8, 5, function(){
+    return this.firstNumber * this.secondNumber;
+});
+var secondInst = new SomeNumbers(63, 8, function(){
+    return this.firstNumber / this.secondNumber;
+});
+var thirdInst = new SomeNumbers(36, 3, function(){
+    return this.firstNumber + this.secondNumber;
+});
+var fourthInst = new SomeNumbers(100, 24, function(){
+    return this.firstNumber - this.secondNumber;
+});
+    
+    
+console.log(firstInst.calculationFunction());
+console.log(secondInst.calculationFunction());
+console.log(thirdInst.calculationFunction());
+console.log(fourthInst.calculationFunction());
 
 
